@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <body>
+        <div class="container">
+            <div id="left-box">
+                <input type="radio" name="color" id="color-1" checked hidden>
+                <input type="radio" name="color" id="color-2" hidden>
+                <input type="radio" name="color" id="color-3" hidden>
+                <input type="radio" name="color" id="color-4" hidden>
+                Left
+                <div class="product">
+                    <img src="T-Shirt.png" >
+                </div>
+                <div class="product-nav">
+                    <label for="color-1"></label>
+                    <label for="color-2"></label>
+                    <label for="color-3"></label>
+                    <label for="color-4"></label>
+                </div>
+            </div>
+
+            
+
+
+            <div id="right-box">
+                <h3 id="r-title">Right</h3>
+                <h4>Nike athletic T-shirt</h4>
+                <br>
+                <h4 style="text-decoration: none;">Price: <b>$<span class="item-price">0</span></b></h4>
+                <h4 style="text-decoration: none; font-size: 12px; margin-top: 10px; margin-left: 5px; letter-spacing: 0px;">(plus tax)</h7>
+                <div id="quantity">
+                <button id="decrement" onclick="stepper(this)"> - </button>
+                <input type="number" min="0" max="12" step="1" value="1" id="my-input" readonly>
+                <button id="increment" class="num" onclick="stepper(this); calcPrice(0)"> + </button>
+                </div>
+                <button id="submit">Submit</button>
+            </div>
+
+        
+        </div>
+    </body>
+    <script>
+        //what the number will be for the quantity
+        const myInput = document.getElementById('my-input');
+        
+        //this function sets up all the variables on how to increment and decrement
+        function stepper(btn){
+
+            //grabbing all of the id attributes
+            let id = btn.getAttribute("id");
+            //grabbing the minimum value 
+            let min = myInput.getAttribute("min");
+            //grabbing the maximum value
+            let max = myInput.getAttribute("max");
+            //the value of how much will be incremented
+            let step = myInput.getAttribute("step");
+            //the valu of what the number will start off of
+            let val = myInput.getAttribute("value");
+            //boolean statement that will check if it will increment
+            let calcStep = (id == "increment") ? (step*1) : (step * -1);
+            //newValue will catch the new value of the number
+            let newValue = parseInt(val) + calcStep;
+            
+            //the new value will be in between whatever the min and max are set
+            if(newValue >= min && newValue <= max)
+                myInput.setAttribute("value", newValue);
+                calcPrice();
+            
+        }
+    </script>
+</html>
