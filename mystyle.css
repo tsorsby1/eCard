@@ -280,3 +280,15 @@ span.total {
     margin-left: 0.3em;
 }
 
+#info-form {
+    position: absolute;
+    top:40%;
+    left: 51%;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 200;
+   
+}
+

@@ -32,20 +32,42 @@
 
             <div id="right-box">
                 <h3 id="r-title">Right</h3>
+                <!--Title of the merchandise -->
                 <h4>Nike athletic T-shirt</h4>
                 <br>
+                <!--Price for the shirt-->
                 <div class="price">
                    <p id="p1">Price per item : &nbsp; $  <span class="item_price">17.5</span></p>
                 <p id="p2" style="text-decoration: none;">Price: $<span class="total">0</span></p>
                 <p id="p3"style="text-decoration: none; font-size: 12px; margin-top: 10px; margin-left: 5px; letter-spacing: 0px;">(plus tax)</p>
+                
                 <div id="line"></div>
+                
+                <!--This is the Total (w/ tax)-->
                 <p id="p4">Total: $<span class="total2">0</span></p>
                 </div>
+
+
+                <!-- Quantity Divider-->
                 <div id="quantity">                    
                     <p id="qnty"> Qnty: </p>                
                 <input type="number" class="num" oninput="calc(0)" min="0" max="12" step="1" value="1" id="my-input">
                 </div>
-                <button id="submit">Submit</button>
+
+                <!--Making a Form-->
+                <form id="info-form">
+                    <label for="fname">First Name: </label>
+                    <input type="text" id="fname" name="fname" required /><br>
+                    <label for="fname">Email: </label>
+                    <input type="text" id="email" name="e-mail" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
+
+
+                    
+                </form>
+
+
+                <!--SUBMIT BUTTON-->
+                <button id="submit" onclick="confirmMsg()">Submit</button>
             </div>        
         </div>
     </body>
@@ -65,6 +87,10 @@
 
 if (!isNaN(total))
     document.getElementsByClassName("total2")[n].innerHTML = total2.toFixed(2);
+}
+
+function confirmMsg(){
+    alert("Purchase Completed, Thank you!!!");
 }
 
     </script>
