@@ -13,6 +13,8 @@
 <body>
     <div class="container">
         <div id="left-box">
+
+            <!-- Hiding the radio buttons-->
             <input type="radio" name="color" id="color-1" checked hidden>
             <input type="radio" name="color" id="color-2" hidden>
             <input type="radio" name="color" id="color-3" hidden>
@@ -20,6 +22,8 @@
             <div class="product">
                 <img src="T-Shirt.png">
             </div>
+
+            <!--Navigation bar for the radio buttons-->
             <div class="product-nav">
                 <label for="color-1"></label>
                 <label for="color-2"></label>
@@ -32,25 +36,32 @@
 
 
         <div id="right-box">
+
             <!--Title of the merchandise -->
             <h4>Nike athletic T-shirt</h4>
             <br>
+
             <!--Price for the shirt-->
             <div class="price">
+
+                <!--Hiding the price per item but need line 43 for getting the price per shirt-->
                 <p id="p1">Price per item : &nbsp; $ <span class="item_price">17.50</span></p>
-                <p id="p2" style="text-decoration: none;">Price: $<span class="total">17.50</span></p>
+                <p id="p2">Price: $<span class="total">17.50</span></p>
                 <p id="p3"
-                    style="text-decoration: none; font-size: 12px; margin-top: 10px; margin-left: 5px; letter-spacing: 0px;">
+                    style="font-size: 12px; margin-top: 10px; margin-left: 5px; letter-spacing: 0px;">
                     (plus tax)</p>
 
+                
+                    <!--Line that divides the Price from the total price -->
                 <div id="line"></div>
+
 
                 <!--This is the Total (w/ tax)-->
                 <p id="p4">Total: $<span class="total2">19.04</span></p>
             </div>
 
 
-            <!-- Quantity Divider-->
+            <!-- Quantity Section-->
             <div id="quantity">
                 <p id="qnty"> Qnty: </p>
                 <input type="number" class="num" oninput="calc(0)" min="0" max="12" value="1" id="my-input">
@@ -58,19 +69,26 @@
 
             <!--Making a Form (a form of semantic tag)-->
             <form id="info-form" name="myform" onsubmit="return confirmMsg()">
+                <!-- 1st input -->
                 <label for="fname">First Name: </label>
                 <input type="text" id="fname" name="fname2"><br>
+                <!-- 2nd input -->
                 <label for="lname">Last Name: </label>
                 <input type="text" id="lname" name="lname2"><br>
 
+                <!-- 3rd input  -->
                 <label for="email">Email: </label>
                 <input type="text" id="email" name="email2"><br>
 
+                <!-- 4th input -->
                 <label for="cardnum">Card Number: </label>
                 <input type="text" id="cardnum" name="cardnum2"><br>
+
+                <!--  5th input -->
                 <label for="cvv">CVV: </label>
                 <input type="text" id="cvv" name="cvv2">
 
+                <!-- Submit button -->
                 <input type="submit" id="submit" value="Add to Cart">
             </form>
         </div>
@@ -90,14 +108,14 @@
     var cvv2 = document.forms['myform']['cvv2'];
 
 
-    /* Defining the regular expressions */
+    /* Defining the regular expressions to check the conditions inside the textboxes */
     var letters = /^[a-zA-Z]*$/; //only get letters
 
-    var email_valid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    var email_valid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; //must have an @ and . in the email
 
-    var card_valid = /^\d{16}$/;
+    var card_valid = /^\d{16}$/; //only be able to put in 16 digits
 
-    var cvv_valid = /^[0-9]{3,4}$/;
+    var cvv_valid = /^[0-9]{3,4}$/; //only use 3-4 digits
 
 
     function calc(n) {
@@ -105,13 +123,13 @@
         var item_quantity = document.getElementsByClassName("num")[n].value;
 
 
-        var total = parseFloat(price) * item_quantity;
+        var total = parseFloat(price) * item_quantity; //total is grabbing the price and multiplying it by the quantity
 
-        var total2 = parseFloat(price) * item_quantity * 1.088;
+        var total2 = parseFloat(price) * item_quantity * 1.088; //total2 is basically grabbing the total and adding a tax to it
 
         //if statement showing if the total is a number display it on the class called "total"
         if (!isNaN(total))
-            document.getElementsByClassName("total")[n].innerHTML = total;
+            document.getElementsByClassName("total")[n].innerHTML = total.toFixed(2);
 
         //if statement showing if the total2 is a number display it on the class called "total2"
         if (!isNaN(total2))
