@@ -1,97 +1,161 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="mystyle.css">
-    </head>
-    <body>
-        <div class="container">
-            <div id="left-box">
-                <input type="radio" name="color" id="color-1" checked hidden>
-                <input type="radio" name="color" id="color-2" hidden>
-                <input type="radio" name="color" id="color-3" hidden>
-                <input type="radio" name="color" id="color-4" hidden>
-                Left
-                <div class="product">
-                    <img src="T-Shirt.png" >
-                </div>
-                <div class="product-nav">
-                    <label for="color-1"></label>
-                    <label for="color-2"></label>
-                    <label for="color-3"></label>
-                    <label for="color-4"></label>
-                </div>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="left-box">
+            <input type="radio" name="color" id="color-1" checked hidden>
+            <input type="radio" name="color" id="color-2" hidden>
+            <input type="radio" name="color" id="color-3" hidden>
+            <input type="radio" name="color" id="color-4" hidden>
+            <div class="product">
+                <img src="T-Shirt.png">
+            </div>
+            <div class="product-nav">
+                <label for="color-1"></label>
+                <label for="color-2"></label>
+                <label for="color-3"></label>
+                <label for="color-4"></label>
+            </div>
+        </div>
+
+
+
+
+        <div id="right-box">
+            <!--Title of the merchandise -->
+            <h4>Nike athletic T-shirt</h4>
+            <br>
+            <!--Price for the shirt-->
+            <div class="price">
+                <p id="p1">Price per item : &nbsp; $ <span class="item_price">17.50</span></p>
+                <p id="p2" style="text-decoration: none;">Price: $<span class="total">17.50</span></p>
+                <p id="p3"
+                    style="text-decoration: none; font-size: 12px; margin-top: 10px; margin-left: 5px; letter-spacing: 0px;">
+                    (plus tax)</p>
+
+                <div id="line"></div>
+
+                <!--This is the Total (w/ tax)-->
+                <p id="p4">Total: $<span class="total2">19.04</span></p>
             </div>
 
-            
 
+            <!-- Quantity Divider-->
+            <div id="quantity">
+                <p id="qnty"> Qnty: </p>
+                <input type="number" class="num" oninput="calc(0)" min="0" max="12" value="1" id="my-input">
+            </div>
 
-            <div id="right-box">
-                <h3 id="r-title">Right</h3>
-                <!--Title of the merchandise -->
-                <h4>Nike athletic T-shirt</h4>
-                <br>
-                <!--Price for the shirt-->
-                <div class="price">
-                   <p id="p1">Price per item : &nbsp; $  <span class="item_price">17.5</span></p>
-                <p id="p2" style="text-decoration: none;">Price: $<span class="total">0</span></p>
-                <p id="p3"style="text-decoration: none; font-size: 12px; margin-top: 10px; margin-left: 5px; letter-spacing: 0px;">(plus tax)</p>
-                
-                <div id="line"></div>
-                
-                <!--This is the Total (w/ tax)-->
-                <p id="p4">Total: $<span class="total2">0</span></p>
-                </div>
+            <!--Making a Form (a form of semantic tag)-->
+            <form id="info-form" name="myform" onsubmit="return confirmMsg()">
+                <label for="fname">First Name: </label>
+                <input type="text" id="fname" name="fname2"><br>
+                <label for="lname">Last Name: </label>
+                <input type="text" id="lname" name="lname2"><br>
 
+                <label for="email">Email: </label>
+                <input type="text" id="email" name="email2"><br>
 
-                <!-- Quantity Divider-->
-                <div id="quantity">                    
-                    <p id="qnty"> Qnty: </p>                
-                <input type="number" class="num" oninput="calc(0)" min="0" max="12" step="1" value="1" id="my-input">
-                </div>
+                <label for="cardnum">Card Number: </label>
+                <input type="text" id="cardnum" name="cardnum2"><br>
+                <label for="cvv">CVV: </label>
+                <input type="text" id="cvv" name="cvv2">
 
-                <!--Making a Form-->
-                <form id="info-form">
-                    <label for="fname">First Name: </label>
-                    <input type="text" id="fname" name="fname" required /><br>
-                    <label for="fname">Email: </label>
-                    <input type="text" id="email" name="e-mail" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
-
-
-                    
-                </form>
-
-
-                <!--SUBMIT BUTTON-->
-                <button id="submit" onclick="confirmMsg()">Submit</button>
-            </div>        
+                <input type="submit" id="submit" value="Add to Cart">
+            </form>
         </div>
-    </body>
-    <script>
-        function calc(n) {
-  var price = document.getElementsByClassName("item_price")[n].innerHTML;
-  var item_quantity = document.getElementsByClassName("num")[n].value;
-  
-  
-  var total = parseFloat(price) * item_quantity;
+    </div>
+</body>
+<script>
 
-  var total2 = parseFloat(price) * item_quantity * 1.088;
-  
-  
-  if (!isNaN(total))
-    document.getElementsByClassName("total")[n].innerHTML = total;
+    /* Defining the variables inside of the form */
+    var fname2 = document.forms['myform']['fname2'];
 
-if (!isNaN(total))
-    document.getElementsByClassName("total2")[n].innerHTML = total2.toFixed(2);
-}
+    var lname2 = document.forms['myform']['lname2'];
 
-function confirmMsg(){
-    alert("Purchase Completed, Thank you!!!");
-}
+    var email2 = document.forms['myform']['email2'];
 
-    </script>
+    var cardnum2 = document.forms['myform']['cardnum2'];
+
+    var cvv2 = document.forms['myform']['cvv2'];
+
+
+    /* Defining the regular expressions */
+    var letters = /^[a-zA-Z]*$/; //only get letters
+
+    var email_valid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+    var card_valid = /^\d{16}$/;
+
+    var cvv_valid = /^[0-9]{3,4}$/;
+
+
+    function calc(n) {
+        var price = document.getElementsByClassName("item_price")[n].innerHTML;
+        var item_quantity = document.getElementsByClassName("num")[n].value;
+
+
+        var total = parseFloat(price) * item_quantity;
+
+        var total2 = parseFloat(price) * item_quantity * 1.088;
+
+        //if statement showing if the total is a number display it on the class called "total"
+        if (!isNaN(total))
+            document.getElementsByClassName("total")[n].innerHTML = total;
+
+        //if statement showing if the total2 is a number display it on the class called "total2"
+        if (!isNaN(total2))
+            document.getElementsByClassName("total2")[n].innerHTML = total2.toFixed(2);
+    }
+
+
+    //this function goes through the conditions of the form and what it needs to do in order for it to be successful
+    function confirmMsg() {
+        if (fname2.value == '') {
+            alert("Must fill out Firstname");
+            return false;
+        }
+        else if (!fname2.value.match(letters)) {
+            alert("Must use ONLY characters on the Firstname");
+            return false;
+        }
+        else if (lname2.value == '') {
+            alert("Must fill out Lastname");
+            return false;
+        }
+        else if (!lname2.value.match(letters)) {
+            alert("Must use ONLY characters on the Lastname");
+            return false;
+        }
+        else if (!email2.value.match(email_valid)) {
+            alert("Email address must contain " + " '@' " +
+                " and " + " '.' ");
+            return false;
+        }
+        else if (!cardnum2.value.match(card_valid)) {
+            alert("Card must contain 16 digits!");
+            return false;
+        }
+        else if (!cvv2.value.match(cvv_valid)) {
+            alert("Card must contain 3 to 4 digits!");
+            return false;
+        }
+        else {
+            alert("Purchase Completed, Thank you!");
+            return true;
+        }
+    }
+
+</script>
+
 </html>
